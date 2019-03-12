@@ -39,7 +39,7 @@ def Res_DualCNN_encode(seqs, use_spatial_dropout=True, scope='res_biconv_block',
             out1 = spatial_dropout(out1)
         out2 = CNN_encode(out1, scope='second_conv1d', **kwargs)
         if use_spatial_dropout:
-            out2 = CNN_encode(out2)
+            out2 = spatial_dropout(out2)
         return dropout_res_layernorm(seqs, out2, **kwargs)
 
 
