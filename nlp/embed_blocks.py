@@ -46,6 +46,7 @@ def Positional_embed(batch_size,
 
 def SinusPositional_embed(batch_size,
                           seq_length,
+                          max_seq_len,
                           num_units,
                           zero_pad=True,
                           scale=True,
@@ -70,7 +71,7 @@ def SinusPositional_embed(batch_size,
         # First part of the PE function: sin and cos argument
         position_enc = np.array([
             [pos / np.power(10000, 2. * i / num_units) for i in range(num_units)]
-            for pos in range(seq_length)])
+            for pos in range(max_seq_len)])
 
         # Second part, apply the cosine to even columns and sin to odds.
         position_enc[:, 0::2] = np.sin(position_enc[:, 0::2])  # dim 2i
